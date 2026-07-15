@@ -1,0 +1,423 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FinanceGuard - Reports &amp; Analytics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-tertiary": "#ffffff",
+                "primary-container": "#0f1c2c",
+                "on-secondary-fixed-variant": "#005049",
+                "inverse-primary": "#bac8dc",
+                "on-tertiary-container": "#9a7f61",
+                "on-tertiary-fixed": "#281804",
+                "background": "#f8f9fa",
+                "tertiary-fixed-dim": "#e0c1a0",
+                "on-secondary-container": "#007168",
+                "surface-container-low": "#f3f4f5",
+                "on-error": "#ffffff",
+                "secondary-fixed-dim": "#4fdbcc",
+                "on-primary-container": "#778598",
+                "primary-fixed-dim": "#bac8dc",
+                "surface-container-high": "#e7e8e9",
+                "tertiary-fixed": "#feddba",
+                "surface-tint": "#525f71",
+                "tertiary-container": "#281804",
+                "secondary": "#006a62",
+                "surface-container-lowest": "#ffffff",
+                "on-secondary": "#ffffff",
+                "on-secondary-fixed": "#00201d",
+                "secondary-fixed": "#70f8e8",
+                "surface": "#f8f9fa",
+                "inverse-on-surface": "#f0f1f2",
+                "surface-bright": "#f8f9fa",
+                "inverse-surface": "#2e3132",
+                "on-primary-fixed-variant": "#3a4859",
+                "error-container": "#ffdad6",
+                "on-background": "#191c1d",
+                "outline-variant": "#c4c6cc",
+                "error": "#ba1a1a",
+                "primary": "#000000",
+                "surface-container": "#edeeef",
+                "on-primary-fixed": "#0f1c2c",
+                "on-error-container": "#93000a",
+                "on-primary": "#ffffff",
+                "surface-variant": "#e1e3e4",
+                "tertiary": "#000000",
+                "on-surface": "#191c1d",
+                "secondary-container": "#70f8e8",
+                "outline": "#74777d",
+                "on-surface-variant": "#44474c",
+                "primary-fixed": "#d6e4f9",
+                "surface-dim": "#d9dadb",
+                "on-tertiary-fixed-variant": "#584329",
+                "surface-container-highest": "#e1e3e4"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "sm": "8px",
+                "margin-mobile": "20px",
+                "base": "4px",
+                "gutter": "16px",
+                "md": "16px",
+                "xs": "4px",
+                "margin-tablet": "32px",
+                "lg": "24px",
+                "xl": "32px"
+            },
+            "fontFamily": {
+                "headline-md": ["Inter"],
+                "label-md": ["Inter"],
+                "body-lg": ["Inter"],
+                "display": ["Inter"],
+                "label-sm": ["Inter"],
+                "headline-lg": ["Inter"],
+                "body-md": ["Inter"],
+                "numeric-lg": ["Inter"],
+                "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                "display": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "numeric-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .bento-card {
+            background: white;
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        .bento-card:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+        .chart-bar {
+            transition: height 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0 md:pl-64">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-40 bg-surface shadow-sm flex justify-between items-center px-margin-mobile py-sm md:px-margin-tablet">
+<div class="flex items-center gap-md">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">FinanceGuard</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined p-2 rounded-full hover:bg-surface-container-high transition-colors text-on-surface-variant">notifications</button>
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional studio portrait of a corporate financial advisor, smiling confidently. The lighting is soft and high-key, reflecting a clean and trustworthy atmosphere. The background is a blurred modern office space with neutral gray and white tones, maintaining a professional and secure financial brand aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBM98loIsp8dON_6xpgdKLD1JlkLA6imCwkJk5F68C0KgP0OOo3cwqbtNsah3YTHBy0zNB4bJK-LbB743iuYqTlkhJ7wr2oa-tGO_sICOncakwhCiIGgeqmNh2tOAipBizke20H1kwuvP6E9rJ4dWIZ__H0PkcCQsmOdzvgTngb6G8DWNoCd8kKTXdnc7her51Os-XvpeGrpm2nsrG3U1X2Rj_f0H6aZnqQOgTa8_CXzm1q6bWOluDA0A">
+</div>
+</div>
+</header>
+<!-- Navigation Drawer (Desktop Only) -->
+<aside class="hidden md:flex flex-col gap-sm p-md h-screen w-64 fixed left-0 top-0 bg-surface-container border-r border-outline-variant z-50">
+<div class="mb-xl px-4">
+<h2 class="font-headline-md text-headline-md font-bold text-primary">FinanceGuard</h2>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-md text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-md text-label-md">Budget</span>
+</a>
+<a class="flex items-center gap-md bg-secondary text-on-secondary rounded-lg px-4 py-3 transition-all" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-md text-label-md">Reports</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">ads_click</span>
+<span class="font-label-md text-label-md">Goals</span>
+</a>
+<a class="flex items-center gap-md text-on-surface-variant px-4 py-3 rounded-lg hover:bg-surface-container-high transition-all" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-md text-label-md">Transactions</span>
+</a>
+</nav>
+<div class="mt-auto border-t border-outline-variant pt-md">
+<div class="px-4 py-3 flex items-center gap-md">
+<span class="material-symbols-outlined">admin_panel_settings</span>
+<span class="font-label-md text-label-md">Admin Panel</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="p-margin-mobile md:p-margin-tablet max-w-7xl mx-auto space-y-lg">
+<!-- Header & Date Picker -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-md">
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">Financial Insights</p>
+<h2 class="font-headline-lg text-headline-lg text-primary">Reports &amp; Analytics</h2>
+</div>
+<div class="flex flex-wrap items-center gap-sm bg-white p-2 rounded-xl border border-outline-variant shadow-sm">
+<div class="flex items-center px-3 py-2 gap-2 border-r border-outline-variant">
+<span class="material-symbols-outlined text-secondary text-[20px]">calendar_today</span>
+<span class="font-label-md text-label-md">Jan 01, 2024 - Jun 30, 2024</span>
+</div>
+<button class="flex items-center gap-1 px-4 py-2 hover:bg-surface-container transition-colors rounded-lg font-label-md text-label-md text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                    Export
+                </button>
+<div class="relative group">
+<button class="bg-secondary text-on-secondary px-4 py-2 rounded-lg font-label-md text-label-md hover:opacity-90 transition-opacity">
+                        PDF Report
+                    </button>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<!-- Monthly Comparison Bar Chart -->
+<div class="md:col-span-8 bento-card rounded-xl p-lg flex flex-col gap-lg shadow-sm h-[400px]">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md">Monthly Spending Comparison</h3>
+<div class="flex gap-md">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Current Year</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-outline-variant"></span>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Previous Year</span>
+</div>
+</div>
+</div>
+<div class="flex-1 flex items-end justify-between gap-4 px-2 pb-6">
+<!-- Bar Chart Item: Jan -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full flex items-end justify-center gap-1 h-48">
+<div class="w-4 bg-outline-variant rounded-t-sm chart-bar" style="height: 0%;"></div>
+<div class="w-4 bg-secondary rounded-t-sm chart-bar" style="height: 0%;"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Jan</span>
+</div>
+<!-- Bar Chart Item: Feb -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full flex items-end justify-center gap-1 h-48">
+<div class="w-4 bg-outline-variant rounded-t-sm chart-bar" style="height: 0%;"></div>
+<div class="w-4 bg-secondary rounded-t-sm chart-bar" style="height: 0%;"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Feb</span>
+</div>
+<!-- Bar Chart Item: Mar -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full flex items-end justify-center gap-1 h-48">
+<div class="w-4 bg-outline-variant rounded-t-sm chart-bar" style="height: 0%;"></div>
+<div class="w-4 bg-secondary rounded-t-sm chart-bar" style="height: 0%;"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Mar</span>
+</div>
+<!-- Bar Chart Item: Apr -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full flex items-end justify-center gap-1 h-48">
+<div class="w-4 bg-outline-variant rounded-t-sm chart-bar" style="height: 0%;"></div>
+<div class="w-4 bg-secondary rounded-t-sm chart-bar" style="height: 0%;"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Apr</span>
+</div>
+<!-- Bar Chart Item: May -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full flex items-end justify-center gap-1 h-48">
+<div class="w-4 bg-outline-variant rounded-t-sm chart-bar" style="height: 0%;"></div>
+<div class="w-4 bg-secondary rounded-t-sm chart-bar" style="height: 0%;"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">May</span>
+</div>
+<!-- Bar Chart Item: Jun -->
+<div class="flex-1 flex flex-col items-center gap-3">
+<div class="w-full flex items-end justify-center gap-1 h-48">
+<div class="w-4 bg-outline-variant rounded-t-sm chart-bar" style="height: 0%;"></div>
+<div class="w-4 bg-secondary rounded-t-sm chart-bar" style="height: 0%;"></div>
+</div>
+<span class="text-label-sm font-label-sm text-on-surface-variant">Jun</span>
+</div>
+</div>
+</div>
+<!-- Summary Card -->
+<div class="md:col-span-4 bento-card rounded-xl p-lg flex flex-col justify-between bg-primary text-on-primary">
+<div>
+<h3 class="font-headline-md text-headline-md opacity-80">Total Outflow</h3>
+<p class="font-display text-display mt-2">$24,582.00</p>
+<div class="flex items-center gap-2 mt-4 text-secondary-container">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="font-label-md text-label-md">12.5% vs last period</span>
+</div>
+</div>
+<div class="pt-lg">
+<p class="text-label-sm font-label-sm opacity-60 mb-sm">Next Forecasted Month</p>
+<div class="flex items-end gap-2">
+<span class="font-numeric-lg text-numeric-lg">$4,200.00</span>
+<span class="text-label-sm font-label-sm mb-1 opacity-80">(est.)</span>
+</div>
+</div>
+</div>
+<!-- Top Spending Categories -->
+<div class="md:col-span-6 bento-card rounded-xl p-lg">
+<h3 class="font-headline-md text-headline-md mb-lg">Top Spending Categories</h3>
+<div class="space-y-lg">
+<!-- Category Item -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md">Retail &amp; Shopping</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">24 Transactions</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md">$8,432.50</p>
+<div class="w-24 h-1.5 bg-surface-container rounded-full mt-1 overflow-hidden">
+<div class="h-full bg-secondary w-[65%]"></div>
+</div>
+</div>
+</div>
+<!-- Category Item -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed-dim flex items-center justify-center text-on-tertiary-fixed-variant">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md">Dining &amp; Food</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">42 Transactions</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md">$4,120.20</p>
+<div class="w-24 h-1.5 bg-surface-container rounded-full mt-1 overflow-hidden">
+<div class="h-full bg-secondary w-[40%]"></div>
+</div>
+</div>
+</div>
+<!-- Category Item -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-xl bg-on-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">home_repair_service</span>
+</div>
+<div>
+<h4 class="font-label-md text-label-md">Rent &amp; Utilities</h4>
+<p class="text-label-sm font-label-sm text-on-surface-variant">4 Transactions</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-md text-label-md">$3,800.00</p>
+<div class="w-24 h-1.5 bg-surface-container rounded-full mt-1 overflow-hidden">
+<div class="h-full bg-secondary w-[35%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Insights / Heatmap placeholder -->
+<div class="md:col-span-6 bento-card rounded-xl p-lg relative overflow-hidden group">
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md mb-2">Spending Efficiency</h3>
+<p class="text-body-md text-on-surface-variant mb-lg">Your spending in 'Leisure' is 15% lower than the regional average for your income bracket. Good job!</p>
+</div>
+<div class="h-40 w-full relative">
+<div class="absolute inset-0 flex items-center justify-center">
+<!-- Abstract data visualization art -->
+<div class="w-full h-full opacity-10 flex items-center justify-center">
+<span class="material-symbols-outlined text-[120px]">bubble_chart</span>
+</div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-48 h-48 border-[12px] border-secondary/20 rounded-full flex items-center justify-center">
+<div class="w-36 h-36 border-[12px] border-secondary/40 rounded-full flex items-center justify-center">
+<div class="w-24 h-24 border-[12px] border-secondary rounded-full flex flex-col items-center justify-center">
+<span class="font-numeric-lg text-numeric-lg">82</span>
+<span class="text-label-sm font-label-sm">SCORE</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-lg pt-lg border-t border-outline-variant flex justify-between items-center">
+<button class="text-secondary font-label-md text-label-md hover:underline">View detailed audit</button>
+<span class="material-symbols-outlined text-on-surface-variant">arrow_forward</span>
+</div>
+</div>
+</div>
+<!-- Action Grid -->
+<section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-md pb-12">
+<button class="bento-card p-lg rounded-xl flex flex-col items-start gap-md hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-secondary">summarize</span>
+<span class="font-label-md text-label-md">Quarterly Review</span>
+</button>
+<button class="bento-card p-lg rounded-xl flex flex-col items-start gap-md hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-secondary">receipt</span>
+<span class="font-label-md text-label-md">Tax Preparation</span>
+</button>
+<button class="bento-card p-lg rounded-xl flex flex-col items-start gap-md hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-secondary">account_balance</span>
+<span class="font-label-md text-label-md">Debt Analytics</span>
+</button>
+<button class="bento-card p-lg rounded-xl flex flex-col items-start gap-md hover:border-secondary transition-all">
+<span class="material-symbols-outlined text-secondary">cloud_download</span>
+<span class="font-label-md text-label-md">Download All Data</span>
+</button>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 bg-surface border-t border-outline-variant flex justify-around items-center px-4 py-2 pb-safe shadow-lg">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Budget</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">Reports</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Transact</span>
+</a>
+</nav>
+<script>
+        // Simple animation trigger for chart bars
+        document.addEventListener('DOMContentLoaded', () => {
+            const bars = document.querySelectorAll('.chart-bar');
+            bars.forEach(bar => {
+                const finalHeight = bar.style.height;
+                bar.style.height = '0%';
+                setTimeout(() => {
+                    bar.style.height = finalHeight;
+                }, 300);
+            });
+        });
+    </script>
+</body></html>

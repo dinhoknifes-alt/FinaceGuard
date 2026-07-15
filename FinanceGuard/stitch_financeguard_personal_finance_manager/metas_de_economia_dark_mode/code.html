@@ -1,0 +1,344 @@
+<!DOCTYPE html><html lang="en" class="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#2d3541",
+                    "on-primary-fixed-variant": "#005236",
+                    "inverse-surface": "#dbe3f3",
+                    "surface-dim": "#0c141f",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#fc7c78",
+                    "inverse-primary": "#006c49",
+                    "surface-container-low": "#141c27",
+                    "surface-container-high": "#232a36",
+                    "tertiary-fixed": "#ffdad7",
+                    "surface-container": "#18202b",
+                    "primary": "#4edea3",
+                    "on-tertiary-container": "#711419",
+                    "error": "#ffb4ab",
+                    "inverse-on-surface": "#29313d",
+                    "on-secondary-container": "#abb9d2",
+                    "on-error-container": "#ffdad6",
+                    "on-error": "#690005",
+                    "surface-container-lowest": "#070f19",
+                    "primary-container": "#10b981",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-tertiary": "#650911",
+                    "tertiary": "#ffb3af",
+                    "secondary-fixed-dim": "#b9c7e0",
+                    "primary-fixed": "#6ffbbe",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "on-primary": "#003824",
+                    "secondary-fixed": "#d5e3fd",
+                    "on-surface": "#dbe3f3",
+                    "secondary": "#b9c7e0",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "surface-tint": "#4edea3",
+                    "on-secondary": "#233144",
+                    "surface-container-highest": "#2d3541",
+                    "outline-variant": "#3c4a42",
+                    "on-secondary-fixed-variant": "#3a485c",
+                    "surface-bright": "#323a46",
+                    "on-secondary-fixed": "#0d1c2f",
+                    "on-background": "#dbe3f3",
+                    "on-primary-container": "#00422b",
+                    "surface": "#0c141f",
+                    "outline": "#86948a",
+                    "background": "#0c141f",
+                    "secondary-container": "#3c4a5e",
+                    "on-tertiary-fixed": "#410005",
+                    "on-surface-variant": "#bbcabf",
+                    "on-primary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "12px",
+                    "base": "8px",
+                    "gutter": "16px",
+                    "container-padding": "24px",
+                    "stack-md": "24px",
+                    "stack-lg": "48px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Manrope"],
+                    "label-md": ["JetBrains Mono"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}</script><meta charset="utf-8"></head><body class="font-body-md text-body-md antialiased overflow-x-hidden pb-24 md:pb-0 md:pt-16">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface-container h-16 flex justify-between items-center px-gutter">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;" data-original-icon="account_balance">account_balance</span>
+</div>
+<h1 class="font-headline-md text-headline-md-mobile font-bold text-primary">FinanceGuard</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-variant transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined text-on-surface-variant" data-original-icon="notifications">notifications</span>
+</button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a young financial analyst, wearing a charcoal suit, with a clean and neutral background. The lighting is soft and corporate, matching a high-end dark-themed fintech application dashboard. The portrait is centered and exudes confidence and security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzBrLrQcq4_pJSJ-dRFtWxm4eIx6spX-K9_PPg9zfaXoa91oDKufLk9vHCJSbhWpOw1QfYBeaWQju3xtE_ce8USDcrQrme7YPKgq5DpyL4rT_FCeVGZniwP3ppUP15xrY3CzhISQGypWwgfk5cCJNewp7x9jfJpdHEXwctMinin7Y2nayIq91XGL_3-OCky3_uFpAdp7ObI4OpVoo18O5SZi508JRY2Qs_j9Pjo10DnPp7_zNwx4Jhbw">
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="max-w-7xl mx-auto px-gutter py-stack-md mt-16 md:mt-0">
+<!-- Header Section -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-gutter mb-stack-lg">
+<div class="space-y-2">
+<h2 class="font-headline-lg text-headline-lg-mobile text-on-surface">Savings Goals</h2>
+<p class="text-on-surface-variant max-w-md">Track your progress and stay motivated. You're currently on track to reach 3 out of 4 goals this year.</p>
+</div>
+<button class="bg-primary text-on-primary font-headline-md text-label-md px-6 py-3 rounded-xl flex items-center gap-2 hover:brightness-110 transition-all shadow-lg shadow-primary/10 active:scale-95">
+<span class="material-symbols-outlined">add</span>
+                Create New Goal
+            </button>
+</section>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-md">
+<!-- Left Column: Goals Grid -->
+<div class="lg:col-span-8 space-y-stack-md">
+<!-- Goals Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- -->
+<div class="glass-card p-6 rounded-xl space-y-4 hover:border-primary/30 transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-primary/10 rounded-lg">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-1 bg-primary/15 text-primary rounded-full">On Track</span>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface">Emergency Fund</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Safety net for 6 months</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface">$12,450.00</span>
+<span class="text-on-surface-variant">of $15,000</span>
+</div>
+<div class="w-full bg-surface-variant h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full emerald-glow transition-all duration-1000 ease-out" style="width: 83%"></div>
+</div>
+<div class="flex justify-between items-center text-label-sm font-label-sm pt-1">
+<span class="text-primary">83% achieved</span>
+<span class="text-on-surface-variant">8 months left</span>
+</div>
+</div>
+</div>
+<!-- Goal Card: New Car -->
+<div class="glass-card p-6 rounded-xl space-y-4 hover:border-primary/30 transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-secondary-container/20 rounded-lg">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">directions_car</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-1 bg-surface-variant text-on-surface-variant rounded-full">Ahead</span>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface">Tesla Model 3</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Down payment goal</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface">$4,200.00</span>
+<span class="text-on-surface-variant">of $10,000</span>
+</div>
+<div class="w-full bg-surface-variant h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full emerald-glow transition-all duration-1000 ease-out" style="width: 42%"></div>
+</div>
+<div class="flex justify-between items-center text-label-sm font-label-sm pt-1">
+<span class="text-primary">42% achieved</span>
+<span class="text-on-surface-variant">14 months left</span>
+</div>
+</div>
+</div>
+<!-- Goal Card: European Summer -->
+<div class="glass-card p-6 rounded-xl space-y-4 hover:border-primary/30 transition-all duration-300">
+<div class="flex justify-between items-start">
+<div class="p-3 bg-tertiary-container/10 rounded-lg">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+</div>
+<span class="font-label-sm text-label-sm px-2 py-1 bg-primary/15 text-primary rounded-full">Active</span>
+</div>
+<div>
+<h3 class="font-headline-md text-on-surface">Euro Summer '25</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Travel and experiences</p>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between font-label-md text-label-md">
+<span class="text-on-surface">$1,150.00</span>
+<span class="text-on-surface-variant">of $5,000</span>
+</div>
+<div class="w-full bg-surface-variant h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full emerald-glow transition-all duration-1000 ease-out" style="width: 23%"></div>
+</div>
+<div class="flex justify-between items-center text-label-sm font-label-sm pt-1">
+<span class="text-primary">23% achieved</span>
+<span class="text-on-surface-variant">5 months left</span>
+</div>
+</div>
+</div>
+<!-- Add New Goal Placeholder -->
+<button class="border-2 border-dashed border-outline-variant rounded-xl p-6 flex flex-col items-center justify-center gap-3 text-on-surface-variant hover:text-primary hover:border-primary/50 transition-all group">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-primary/10">
+<span class="material-symbols-outlined">add_circle</span>
+</div>
+<span class="font-headline-md">Add Another Goal</span>
+</button>
+</div>
+</div>
+<!-- Right Column: Insights & Stats -->
+<div class="lg:col-span-4 space-y-stack-md">
+<!-- Motivational Insight Card -->
+<div class="relative overflow-hidden bg-primary-container rounded-xl p-6 text-on-primary-container">
+<!-- Subtle pattern background -->
+<div class="absolute top-0 right-0 p-4 opacity-20">
+<span class="material-symbols-outlined text-6xl" style="font-variation-settings: 'wght' 700;">trending_up</span>
+</div>
+<div class="relative z-10 space-y-4">
+<h4 class="font-headline-md flex items-center gap-2">
+<span class="material-symbols-outlined">auto_awesome</span>
+                            Smart Insight
+                        </h4>
+<p class="font-body-md italic leading-relaxed">
+                            "You saved 12% more this month than your average. At this rate, you could reach your Emergency Fund goal 2 months earlier!"
+                        </p>
+<div class="pt-2">
+<button class="text-label-md font-label-md underline underline-offset-4 hover:no-underline transition-all">
+                                See habit analysis
+                            </button>
+</div>
+</div>
+</div>
+<!-- Aggregate Stats -->
+<div class="bg-surface-container-high rounded-xl p-6 space-y-6">
+<h4 class="font-headline-md text-on-surface">Total Progress</h4>
+<div class="space-y-4">
+<div class="flex items-center gap-4">
+<div class="flex-1">
+<div class="flex justify-between mb-2">
+<span class="text-label-sm font-label-sm text-on-surface-variant uppercase">Portfolio Progress</span>
+<span class="text-label-sm font-label-sm text-primary">58%</span>
+</div>
+<div class="w-full h-2 bg-surface-variant rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 58%"></div>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container p-4 rounded-lg">
+<span class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Total Saved</span>
+<span class="font-headline-md text-primary">$17,800</span>
+</div>
+<div class="bg-surface-container p-4 rounded-lg">
+<span class="block font-label-sm text-label-sm text-on-surface-variant mb-1">Target</span>
+<span class="font-headline-md text-on-surface">$30,000</span>
+</div>
+</div>
+</div>
+<div class="pt-4 border-t border-outline-variant">
+<h5 class="text-label-sm font-label-sm text-on-surface-variant uppercase mb-4">Milestone Tracker</h5>
+<ul class="space-y-4">
+<li class="flex items-center gap-3">
+<div class="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_#4edea3]"></div>
+<span class="text-body-md text-on-surface">Reached 50% of total goals</span>
+<span class="ml-auto text-label-sm text-on-surface-variant">Aug 12</span>
+</li>
+<li class="flex items-center gap-3 opacity-60">
+<div class="w-2 h-2 rounded-full bg-outline"></div>
+<span class="text-body-md text-on-surface-variant">Reach 75% of total goals</span>
+<span class="ml-auto text-label-sm text-on-surface-variant">In Progress</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Visual Asset -->
+<div class="rounded-xl overflow-hidden aspect-square relative glass-card group">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A stylized, 3D abstract visualization of growth and financial prosperity. Radiant emerald green geometric bars and crystalline structures rise from a dark, reflective floor. The lighting is dramatic, with neon green highlights and deep shadows, suggesting a secure digital vault of assets. High-tech, futuristic aesthetic consistent with premium banking." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_-d7wBQTkZsWU__fSkam5OgNUPyHpfGPjRdaVazF2_2cGlJp9DbkXWmFOoGADeiEJ8hDCZuMOdF8buNGRSZxYNFgmPn1iLCjIu98xocFvsw49rIXq89qSmOeXP8k03ZKdszAWRpJsRG2KHJ5a_IoDvNnkkofzmQb0BoguYGIdNYXQzWXbvSXwPXW1hWQ_tQ4TWy0dae2w4uWBLvlSuM_W20z5VMZJV11DnBcsVdEWARIqoCSBQtmVaQ">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-dim to-transparent opacity-60"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Growth Forecast</span>
+<h4 class="font-headline-md text-white mt-1">Accelerate Savings</h4>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-surface-container-high h-20 px-2 pb-safe flex justify-around items-center rounded-t-xl shadow-md z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Budget</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container/20 text-primary rounded-xl px-3 py-1 scale-90" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">ads_click</span>
+<span class="font-label-sm text-label-sm">Goals</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">Transactions</span>
+</a>
+</nav>
+<!-- FAB for Task-Specific context (Hidden on details, shown here for focus) -->
+<div class="fixed bottom-24 right-6 md:bottom-8 md:right-8 z-40">
+<button class="w-14 h-14 bg-primary text-on-primary rounded-full shadow-2xl flex items-center justify-center hover:scale-105 active:scale-95 transition-all emerald-glow">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'wght' 600;">savings</span>
+</button>
+</div>
+<script>
+        // Micro-interactions for goal cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const bar = card.querySelector('.bg-primary');
+                if (bar) {
+                    bar.style.filter = 'brightness(1.2)';
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                const bar = card.querySelector('.bg-primary');
+                if (bar) {
+                    bar.style.filter = 'brightness(1.0)';
+                }
+            });
+        });
+
+        // Simulating loading state for progress bars
+        window.addEventListener('load', () => {
+            const bars = document.querySelectorAll('.bg-primary');
+            bars.forEach(bar => {
+                const targetWidth = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = targetWidth;
+                }, 300);
+            });
+        });
+    </script>
+</body></html>

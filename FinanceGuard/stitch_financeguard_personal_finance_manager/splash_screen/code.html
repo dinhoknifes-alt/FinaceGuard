@@ -1,0 +1,202 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>FinanceGuard - Secure Splash</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#0f1c2c",
+                    "on-secondary-fixed-variant": "#005049",
+                    "inverse-primary": "#bac8dc",
+                    "on-tertiary-container": "#9a7f61",
+                    "on-tertiary-fixed": "#281804",
+                    "background": "#f8f9fa",
+                    "tertiary-fixed-dim": "#e0c1a0",
+                    "on-secondary-container": "#007168",
+                    "surface-container-low": "#f3f4f5",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#4fdbcc",
+                    "on-primary-container": "#778598",
+                    "primary-fixed-dim": "#bac8dc",
+                    "surface-container-high": "#e7e8e9",
+                    "tertiary-fixed": "#feddba",
+                    "surface-tint": "#525f71",
+                    "tertiary-container": "#281804",
+                    "secondary": "#006a62",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#00201d",
+                    "secondary-fixed": "#70f8e8",
+                    "surface": "#f8f9fa",
+                    "inverse-on-surface": "#f0f1f2",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-surface": "#2e3132",
+                    "on-primary-fixed-variant": "#3a4859",
+                    "error-container": "#ffdad6",
+                    "on-background": "#191c1d",
+                    "outline-variant": "#c4c6cc",
+                    "error": "#ba1a1a",
+                    "primary": "#000000",
+                    "surface-container": "#edeeef",
+                    "on-primary-fixed": "#0f1c2c",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "tertiary": "#000000",
+                    "on-surface": "#191c1d",
+                    "secondary-container": "#70f8e8",
+                    "outline": "#74777d",
+                    "on-surface-variant": "#44474c",
+                    "primary-fixed": "#d6e4f9",
+                    "surface-dim": "#d9dadb",
+                    "on-tertiary-fixed-variant": "#584329",
+                    "surface-container-highest": "#e1e3e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "margin-mobile": "20px",
+                    "base": "4px",
+                    "gutter": "16px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "margin-tablet": "32px",
+                    "lg": "24px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "numeric-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "numeric-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #0f1c2c; /* primary-container fallback */
+        }
+        
+        .loading-bar-container {
+            width: 140px;
+            height: 2px;
+            background: rgba(186, 200, 220, 0.2); /* inverse-primary with opacity */
+            border-radius: 999px;
+            overflow: hidden;
+            margin-top: 24px;
+        }
+        
+        .loading-bar-progress {
+            height: 100%;
+            width: 30%;
+            background: #ffffff;
+            border-radius: 999px;
+            animation: loadingMove 2s infinite ease-in-out;
+        }
+
+        @keyframes loadingMove {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(200%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s forwards ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .shield-glow {
+            filter: drop-shadow(0 0 15px rgba(112, 248, 232, 0.3));
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen">
+<!-- Atmospheric Background Shader -->
+
+<!-- Main Content Canvas -->
+<main class="relative z-10 flex flex-col items-center justify-center p-margin-mobile text-center fade-in">
+<!-- Identity Branding Block -->
+<div class="relative mb-lg group">
+<!-- Shield & Currency Icon Composition -->
+<div class="w-24 h-24 md:w-32 md:h-32 bg-on-primary-fixed/10 backdrop-blur-md rounded-xl flex items-center justify-center border border-on-primary-fixed/20 shield-glow transition-transform duration-700 hover:scale-105">
+<span class="material-symbols-outlined text-[48px] md:text-[64px] text-on-primary absolute opacity-20" data-icon="shield" style="font-variation-settings: 'FILL' 1;">shield</span>
+<span class="material-symbols-outlined text-[32px] md:text-[40px] text-secondary-fixed relative z-10" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+</div>
+<!-- Brand Text Anchor -->
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-primary tracking-tight mb-base">
+            FinanceGuard
+        </h1>
+<!-- Tagline / Subtitle -->
+<p class="font-label-md text-label-md text-on-primary-container/80 max-w-[240px] leading-relaxed">
+            Your secure gateway to intelligent wealth management.
+        </p>
+<!-- Functional Indicator -->
+<div class="loading-bar-container">
+<div class="loading-bar-progress"></div>
+</div>
+<!-- Security Badge -->
+<div class="mt-xl flex items-center gap-xs text-on-primary-container/60">
+<span class="material-symbols-outlined text-[14px]" data-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">End-to-End Encrypted</span>
+</div>
+</main>
+<!-- Subtle Scanline Effect for "High Security" aesthetic -->
+<div class="pointer-events-none absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[length:100%_4px,3px_100%] z-20 opacity-20"></div>
+<script>
+        // Simple micro-interaction for the logo on mouse move
+        document.addEventListener('mousemove', (e) => {
+            const logo = document.querySelector('.shield-glow');
+            if (!logo) return;
+            
+            const xAxis = (window.innerWidth / 2 - e.pageX) / 45;
+            const yAxis = (window.innerHeight / 2 - e.pageY) / 45;
+            
+            logo.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+
+        // Auto-redirect simulation or task completion
+        window.addEventListener('load', () => {
+            console.log('FinanceGuard System Initialized...');
+            // In a real app, logic for checking auth or loading initial data would go here
+        });
+    </script>
+</body></html>

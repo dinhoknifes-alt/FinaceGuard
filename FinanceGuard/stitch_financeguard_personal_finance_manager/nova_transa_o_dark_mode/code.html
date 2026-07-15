@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="en" class="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#2d3541",
+                    "on-primary-fixed-variant": "#005236",
+                    "inverse-surface": "#dbe3f3",
+                    "surface-dim": "#0c141f",
+                    "error-container": "#93000a",
+                    "tertiary-container": "#fc7c78",
+                    "inverse-primary": "#006c49",
+                    "surface-container-low": "#141c27",
+                    "surface-container-high": "#232a36",
+                    "tertiary-fixed": "#ffdad7",
+                    "surface-container": "#18202b",
+                    "primary": "#4edea3",
+                    "on-tertiary-container": "#711419",
+                    "error": "#ffb4ab",
+                    "inverse-on-surface": "#29313d",
+                    "on-secondary-container": "#abb9d2",
+                    "on-error-container": "#ffdad6",
+                    "on-error": "#690005",
+                    "surface-container-lowest": "#070f19",
+                    "primary-container": "#10b981",
+                    "primary-fixed-dim": "#4edea3",
+                    "on-tertiary": "#650911",
+                    "tertiary": "#ffb3af",
+                    "secondary-fixed-dim": "#b9c7e0",
+                    "primary-fixed": "#6ffbbe",
+                    "on-tertiary-fixed-variant": "#842225",
+                    "on-primary": "#003824",
+                    "secondary-fixed": "#d5e3fd",
+                    "on-surface": "#dbe3f3",
+                    "secondary": "#b9c7e0",
+                    "tertiary-fixed-dim": "#ffb3af",
+                    "surface-tint": "#4edea3",
+                    "on-secondary": "#233144",
+                    "surface-container-highest": "#2d3541",
+                    "outline-variant": "#3c4a42",
+                    "on-secondary-fixed-variant": "#3a485c",
+                    "surface-bright": "#323a46",
+                    "on-secondary-fixed": "#0d1c2f",
+                    "on-background": "#dbe3f3",
+                    "on-primary-container": "#00422b",
+                    "surface": "#0c141f",
+                    "outline": "#86948a",
+                    "background": "#0c141f",
+                    "secondary-container": "#3c4a5e",
+                    "on-tertiary-fixed": "#410005",
+                    "on-surface-variant": "#bbcabf",
+                    "on-primary-fixed": "#002113"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "12px",
+                    "base": "8px",
+                    "gutter": "16px",
+                    "container-padding": "24px",
+                    "stack-md": "24px",
+                    "stack-lg": "48px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Manrope"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Manrope"],
+                    "label-md": ["JetBrains Mono"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Manrope"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}</script></head><body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface-container flex justify-between items-center px-gutter h-16 w-full">
+<div class="flex items-center gap-3">
+<button class="text-on-surface hover:bg-surface-variant p-2 rounded-full transition-colors active:scale-95 duration-100">
+<span class="material-symbols-outlined">close</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile font-bold text-primary">New Transaction</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;" data-original-icon="verified_user">verified_user</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant hidden md:block">SECURE SESSION</span>
+</div>
+</header>
+<main class="pt-24 px-gutter max-w-2xl mx-auto space-y-stack-md">
+<!-- Transaction Type Toggle -->
+<div class="flex bg-surface-container-high p-1 rounded-xl">
+<button onclick="setType('expense')" id="btn-expense" class="flex-1 py-3 rounded-lg font-headline-md text-headline-md-mobile transition-all bg-primary-container text-on-primary-container shadow-sm">
+                Expense
+            </button>
+<button onclick="setType('income')" id="btn-income" class="flex-1 py-3 rounded-lg font-headline-md text-headline-md-mobile transition-all text-on-surface-variant hover:text-on-surface">
+                Income
+            </button>
+</div>
+<!-- Amount Input Section -->
+<div class="bg-surface-container p-container-padding rounded-xl border border-outline-variant/30 text-center space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant block uppercase tracking-widest">Transaction Amount</label>
+<div class="flex items-center justify-center gap-2">
+<span id="currency-symbol" class="font-headline-lg text-headline-lg-mobile text-primary">$</span>
+<input type="number" placeholder="0.00" class="bg-transparent border-none text-center font-headline-lg text-headline-lg-mobile text-on-surface placeholder:text-surface-variant w-full focus:ring-0" step="0.01">
+</div>
+</div>
+<!-- Details Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-sm">
+<!-- Category Selection -->
+<div class="bg-surface-container p-gutter rounded-xl border border-outline-variant/30 space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">category</span> Category
+                </label>
+<div class="relative">
+<select class="w-full bg-surface-container-high border border-outline-variant rounded-lg px-3 py-2.5 text-on-surface appearance-none cursor-pointer">
+<option>Housing &amp; Rent</option>
+<option>Food &amp; Dining</option>
+<option>Transportation</option>
+<option>Entertainment</option>
+<option>Utilities</option>
+<option value="custom">+ Create Custom Category</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-on-surface-variant" data-original-icon="expand_more">expand_more</span>
+</div>
+</div>
+<!-- Date Selection -->
+<div class="bg-surface-container p-gutter rounded-xl border border-outline-variant/30 space-y-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">calendar_today</span> Date
+                </label>
+<input type="date" class="w-full bg-surface-container-high border border-outline-variant rounded-lg px-3 py-2 text-on-surface color-scheme-dark" value="2023-10-27">
+</div>
+<!-- Wallet/Account -->
+<div class="bg-surface-container p-gutter rounded-xl border border-outline-variant/30 space-y-2 md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">account_balance_wallet</span> Source Account
+                </label>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-2">
+<button class="flex items-center gap-2 bg-primary-container/10 border border-primary/50 text-primary p-3 rounded-lg text-left transition-all active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">credit_card</span>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md truncate">Main Debit</p>
+<p class="text-[10px] opacity-70">**** 4421</p>
+</div>
+</button>
+<button class="flex items-center gap-2 bg-surface-container-high border border-outline-variant/30 text-on-surface-variant p-3 rounded-lg text-left hover:border-outline transition-all active:scale-95">
+<span class="material-symbols-outlined">payments</span>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md truncate">Cash Vault</p>
+<p class="text-[10px] opacity-70">Personal</p>
+</div>
+</button>
+<button class="flex items-center gap-2 bg-surface-container-high border border-outline-variant/30 text-on-surface-variant p-3 rounded-lg text-left hover:border-outline transition-all active:scale-95">
+<span class="material-symbols-outlined">savings</span>
+<div class="overflow-hidden">
+<p class="font-label-md text-label-md truncate">Savings</p>
+<p class="text-[10px] opacity-70">Emergency</p>
+</div>
+</button>
+</div>
+</div>
+<!-- Notes -->
+<div class="bg-surface-container p-gutter rounded-xl border border-outline-variant/30 space-y-2 md:col-span-2">
+<label class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">sticky_note_2</span> Transaction Note
+                </label>
+<textarea rows="3" placeholder="Add details about this transaction..." class="w-full bg-surface-container-high border border-outline-variant rounded-lg px-3 py-2 text-on-surface resize-none placeholder:text-surface-variant"></textarea>
+</div>
+</div>
+<!-- Recurring Toggle Card -->
+<div class="bg-surface-container-low p-gutter rounded-xl border border-outline-variant/10 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-tertiary-container/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-tertiary">autorenew</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface">Recurring Transaction</h3>
+<p class="text-[12px] text-on-surface-variant">Automatically repeat this entry</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input type="checkbox" value="" class="sr-only peer">
+<div class="w-11 h-6 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<!-- Advanced Features - Tags & Receipt -->
+<div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+<button class="flex-none flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-full border border-outline-variant text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm">sell</span>
+<span class="font-label-sm text-label-sm">Add Tags</span>
+</button>
+<button class="flex-none flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-full border border-outline-variant text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm">receipt</span>
+<span class="font-label-sm text-label-sm">Attach Receipt</span>
+</button>
+<button class="flex-none flex items-center gap-2 px-4 py-2 bg-surface-container-high rounded-full border border-outline-variant text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-sm">location_on</span>
+<span class="font-label-sm text-label-sm">Add Location</span>
+</button>
+</div>
+<!-- Submit Button -->
+<div class="pt-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-on-primary font-headline-md py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">shield_lock</span>
+                Save Transaction
+            </button>
+<p class="text-center text-[11px] text-on-surface-variant mt-4 uppercase tracking-[0.2em]">End-to-End Encrypted Secure Entry</p>
+</div>
+</main>
+<!-- BottomNavBar (Suppressed for transactional screen as per task guidance, but included structure if user navigated back) -->
+<!-- Note: Following "The Filter" Rule - Suppressing BottomNavBar on Transactional screens to prioritize focus -->
+<script>
+        function setType(type) {
+            const expenseBtn = document.getElementById('btn-expense');
+            const incomeBtn = document.getElementById('btn-income');
+            const amountSymbol = document.getElementById('currency-symbol');
+
+            if (type === 'expense') {
+                expenseBtn.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+                expenseBtn.classList.remove('text-on-surface-variant');
+                incomeBtn.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+                incomeBtn.classList.add('text-on-surface-variant');
+                amountSymbol.classList.replace('text-primary', 'text-error');
+                amountSymbol.innerText = '-$';
+            } else {
+                incomeBtn.classList.add('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+                incomeBtn.classList.remove('text-on-surface-variant');
+                expenseBtn.classList.remove('bg-primary-container', 'text-on-primary-container', 'shadow-sm');
+                expenseBtn.classList.add('text-on-surface-variant');
+                amountSymbol.classList.replace('text-error', 'text-primary');
+                amountSymbol.innerText = '+$';
+            }
+        }
+    </script>
+</body></html>
