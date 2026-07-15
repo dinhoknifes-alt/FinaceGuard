@@ -1,0 +1,330 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FinanceGuard - Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#0f1c2c",
+                    "on-secondary-fixed-variant": "#005049",
+                    "inverse-primary": "#bac8dc",
+                    "on-tertiary-container": "#9a7f61",
+                    "on-tertiary-fixed": "#281804",
+                    "background": "#f8f9fa",
+                    "tertiary-fixed-dim": "#e0c1a0",
+                    "on-secondary-container": "#007168",
+                    "surface-container-low": "#f3f4f5",
+                    "on-error": "#ffffff",
+                    "secondary-fixed-dim": "#4fdbcc",
+                    "on-primary-container": "#778598",
+                    "primary-fixed-dim": "#bac8dc",
+                    "surface-container-high": "#e7e8e9",
+                    "tertiary-fixed": "#feddba",
+                    "surface-tint": "#525f71",
+                    "tertiary-container": "#281804",
+                    "secondary": "#006a62",
+                    "surface-container-lowest": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#00201d",
+                    "secondary-fixed": "#70f8e8",
+                    "surface": "#f8f9fa",
+                    "inverse-on-surface": "#f0f1f2",
+                    "surface-bright": "#f8f9fa",
+                    "inverse-surface": "#2e3132",
+                    "on-primary-fixed-variant": "#3a4859",
+                    "error-container": "#ffdad6",
+                    "on-background": "#191c1d",
+                    "outline-variant": "#c4c6cc",
+                    "error": "#ba1a1a",
+                    "primary": "#000000",
+                    "surface-container": "#edeeef",
+                    "on-primary-fixed": "#0f1c2c",
+                    "on-error-container": "#93000a",
+                    "on-primary": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "tertiary": "#000000",
+                    "on-surface": "#191c1d",
+                    "secondary-container": "#70f8e8",
+                    "outline": "#74777d",
+                    "on-surface-variant": "#44474c",
+                    "primary-fixed": "#d6e4f9",
+                    "surface-dim": "#d9dadb",
+                    "on-tertiary-fixed-variant": "#584329",
+                    "surface-container-highest": "#e1e3e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "sm": "8px",
+                    "margin-mobile": "20px",
+                    "base": "4px",
+                    "gutter": "16px",
+                    "md": "16px",
+                    "xs": "4px",
+                    "margin-tablet": "32px",
+                    "lg": "24px",
+                    "xl": "32px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "display": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "numeric-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "numeric-lg": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; }
+        .tonal-card {
+            background-color: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(15, 28, 44, 0.05), 0 2px 4px -1px rgba(15, 28, 44, 0.03);
+        }
+        .progress-bar-fill {
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .donut-segment {
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-surface shadow-sm flex justify-between items-center px-margin-mobile py-sm">
+<div class="flex items-center gap-md">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high flex items-center justify-center border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a financial advisor in a bright, modern office setting. The lighting is soft and high-key, creating a clean light-mode aesthetic. The subject wears a sharp charcoal suit against a minimalist white background. The overall mood is authoritative, secure, and trustworthy, perfectly reflecting a premium corporate banking environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCu-fjDER0pucltVQ21ZZlml28QE10DAkB8Yc5PplZpmnj_J00A6hv2aOdKdJGnVqDO6yAgy_pkJERAM_CPh_t3AJQpMyfa-JzNyacnB4lEEvkRbzNKvDQEpXUSXBxxnxY-p9KwHQtDzCpIGtKzdylI98UPJmwJwsQP9C4ac3OgI4w5fNjy7bwIj_70b6aRhTCiMzVAbDE1rOEvwUl1IiqIso3zsaQjXZwr5rJeSnJ7L2JMaqnW7b6g9A">
+</div>
+<span class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary">FinanceGuard</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+</header>
+<main class="px-margin-mobile py-lg max-w-7xl mx-auto space-y-lg">
+<!-- Summary Cards Section -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-md">
+<!-- Total Balance -->
+<div class="tonal-card p-lg rounded-xl flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Total Balance</span>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+</div>
+<div class="flex flex-col">
+<span class="font-numeric-lg text-numeric-lg text-primary">$124,592.00</span>
+<div class="flex items-center gap-xs text-secondary mt-xs">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-sm text-label-sm">+2.4% from last month</span>
+</div>
+</div>
+</div>
+<!-- Monthly Income -->
+<div class="tonal-card p-lg rounded-xl flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Monthly Income</span>
+<span class="material-symbols-outlined text-secondary">payments</span>
+</div>
+<div class="flex flex-col">
+<span class="font-numeric-lg text-numeric-lg text-primary">$8,400.00</span>
+<div class="flex items-center gap-xs text-secondary mt-xs">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+<span class="font-label-sm text-label-sm">Fully reconciled</span>
+</div>
+</div>
+</div>
+<!-- Expenses -->
+<div class="tonal-card p-lg rounded-xl flex flex-col gap-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">Expenses</span>
+<span class="material-symbols-outlined text-error">shopping_cart</span>
+</div>
+<div class="flex flex-col">
+<span class="font-numeric-lg text-numeric-lg text-primary">$3,210.45</span>
+<div class="flex items-center gap-xs text-error mt-xs">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+<span class="font-label-sm text-label-sm">+12% vs average</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Insights Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Monthly Savings & Progress -->
+<div class="tonal-card p-lg rounded-xl space-y-md">
+<div class="flex justify-between items-start">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Monthly Savings</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Goal: $5,000.00</p>
+</div>
+<span class="font-numeric-lg text-numeric-lg text-secondary">74%</span>
+</div>
+<div class="h-4 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="progress-bar-fill h-full bg-secondary rounded-full" style="width: 74%"></div>
+</div>
+<div class="flex justify-between font-label-sm text-label-sm text-on-surface-variant">
+<span>Current: $3,700.00</span>
+<span>$1,300.00 left</span>
+</div>
+</div>
+<!-- Spending by Category (Donut Chart Pattern) -->
+<div class="tonal-card p-lg rounded-xl flex flex-col gap-md">
+<h2 class="font-headline-md text-headline-md text-primary">Spending by Category</h2>
+<div class="flex items-center justify-around gap-lg">
+<div class="relative w-32 h-32">
+<svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+<circle cx="18" cy="18" fill="transparent" r="15.915" stroke="#edeeef" stroke-width="3"></circle>
+<!-- Housing 40% -->
+<circle class="donut-segment" cx="18" cy="18" fill="transparent" r="15.915" stroke="#006a62" stroke-dasharray="40 60" stroke-dashoffset="0" stroke-width="3"></circle>
+<!-- Food 25% -->
+<circle class="donut-segment" cx="18" cy="18" fill="transparent" r="15.915" stroke="#70f8e8" stroke-dasharray="25 75" stroke-dashoffset="-40" stroke-width="3"></circle>
+<!-- Entertainment 15% -->
+<circle class="donut-segment" cx="18" cy="18" fill="transparent" r="15.915" stroke="#0f1c2c" stroke-dasharray="15 85" stroke-dashoffset="-65" stroke-width="3"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="font-label-md text-label-md font-bold">Top 3</span>
+</div>
+</div>
+<div class="flex flex-col gap-sm">
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-full bg-secondary"></div>
+<span class="font-label-sm text-label-sm text-on-surface">Housing (40%)</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-full bg-secondary-container"></div>
+<span class="font-label-sm text-label-sm text-on-surface">Food (25%)</span>
+</div>
+<div class="flex items-center gap-sm">
+<div class="w-3 h-3 rounded-full bg-primary-container"></div>
+<span class="font-label-sm text-label-sm text-on-surface">Leisure (15%)</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Transactions -->
+<section class="space-y-md">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-md text-headline-md text-primary">Recent Transactions</h2>
+<button class="font-label-md text-label-md text-secondary hover:underline transition-all">View All</button>
+</div>
+<div class="tonal-card rounded-xl overflow-hidden divide-y divide-outline-variant/10">
+<!-- Transaction 1 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">
+<span class="material-symbols-outlined">shopping_bag</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">Apple Store</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Technology • Oct 24, 2023</span>
+</div>
+</div>
+<span class="font-numeric-lg text-headline-md text-primary">-$1,299.00</span>
+</div>
+<!-- Transaction 2 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">L'Avenue Bistro</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Dining • Oct 23, 2023</span>
+</div>
+</div>
+<span class="font-numeric-lg text-headline-md text-primary">-$84.50</span>
+</div>
+<!-- Transaction 3 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">
+<span class="material-symbols-outlined">work</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">TechCorp Inc.</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Salary • Oct 22, 2023</span>
+</div>
+</div>
+<span class="font-numeric-lg text-headline-md text-secondary">+$6,400.00</span>
+</div>
+<!-- Transaction 4 -->
+<div class="p-md flex items-center justify-between hover:bg-surface-container-low transition-colors group cursor-pointer">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container-high flex items-center justify-center text-primary group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-primary">Equinox Fitness</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Health • Oct 20, 2023</span>
+</div>
+</div>
+<span class="font-numeric-lg text-headline-md text-primary">-$185.00</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full flex justify-around items-center px-4 py-2 pb-safe bg-surface border-t border-outline-variant shadow-lg z-50">
+<!-- Dashboard (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-sm text-label-sm">Dashboard</span>
+</a>
+<!-- Budget -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 p-2 rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm">Budget</span>
+</a>
+<!-- Goals -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 p-2 rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">ads_click</span>
+<span class="font-label-sm text-label-sm">Goals</span>
+</a>
+<!-- Transactions -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:bg-surface-variant/50 p-2 rounded-xl transition-all duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="font-label-sm text-label-sm">History</span>
+</a>
+</nav>
+<script>
+        // Simple micro-interaction for numbers
+        document.querySelectorAll('.font-numeric-lg').forEach(el => {
+            el.addEventListener('mouseover', () => {
+                el.style.transform = 'translateY(-2px)';
+                el.style.transition = 'transform 0.2s ease';
+            });
+            el.addEventListener('mouseout', () => {
+                el.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body></html>
